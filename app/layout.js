@@ -12,8 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className='dark'>
       <Providers>
-        <body className={inter.className}>{children}
-        </body>
+        {children}  
       </Providers>
       
     </html>
