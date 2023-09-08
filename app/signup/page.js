@@ -99,7 +99,7 @@ export default function SignUpPage() {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-300 text-sm font-bold mb-2 text-white">
+            <label className="block text-sm font-bold mb-2 text-white">
               Services (Up to 3)
             </label>
             <input
