@@ -18,7 +18,7 @@ export default function AdminDashboard() {
         <h1 className="text-2xl font-semibold">Admin Dashboard</h1>
       </header>
 
-      <section className="p-4">
+      <section className="">
         {/* Service Providers */}
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold mb-4">Service Providers</h2>
@@ -42,8 +42,7 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Display Service Providers List */}
-        {/* Include rating and deletion functionality */}
+  
         {/* Service Providers Table */}
         <section className="p-4 m-4">
           <h2 className="text-xl font-semibold mb-4">Service Providers</h2>
@@ -66,7 +65,7 @@ export default function AdminDashboard() {
             </thead>
             <tbody className="bg-gray-900 divide-y divide-gray-700">
               {/* Map through service providers data and display each row */}
-              {serviceProvidersData.map((provider) => (
+              {serviceProviders.map((provider) => (
                 <tr key={provider.id}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                     {provider.email}

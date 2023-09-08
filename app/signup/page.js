@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function SignUpPage() {
   return (
     <div className="bg-gray-900 min-h-screen flex justify-center items-center">
@@ -100,6 +102,12 @@ export default function SignUpPage() {
               Sign Up
             </button>
           </div>
+          <p className="text-gray-300 text-center">
+              Already have an account?{" "}
+              <Link href="/login" className="text-blue-500 hover:underline">
+                Login
+              </Link>
+            </p>
         </form>
       </div>
     </div>
