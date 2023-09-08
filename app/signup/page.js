@@ -1,6 +1,18 @@
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function SignUpPage() {
+
+  const router = useRouter() || {};
+  const [serviceProvider, setServiceProvider] = useState({
+    email:"",
+    phone: "",
+    password: "",
+    
+  })
+
+
   return (
     <div className="bg-gray-900 min-h-screen flex justify-center items-center">
       <div className="bg-gray-800 p-8 rounded shadow-lg w-96">

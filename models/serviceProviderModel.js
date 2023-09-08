@@ -36,6 +36,6 @@ const serviceProvierSchema = new mongoose.Schema({
 
 }) 
 
-const ServiceProvider = mongoose.models.serviceproviders || mongoose.model("serviceprovisers");
+const ServiceProvider = mongoose.models.serviceproviders || mongoose.model("serviceprovisers", serviceProvierSchema);
 
 export default ServiceProvider;
