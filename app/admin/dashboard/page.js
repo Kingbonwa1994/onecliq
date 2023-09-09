@@ -1,15 +1,30 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import serviceProviders from "./serviceProviders";
 
 export default function AdminDashboard() {
-  const [serviceProvidersData, setServiceProvidersData] = useState([]);
+  const [serviceProviders, setServiceProviders] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [selectedType, setSelectedType] = useState("type1");
-
   useEffect(() => {
-    // Fetch service providers and jobs data here
-    // Update the state with the fetched data
+    // Fetch service providers data
+    axios.get('/api/service-providers')
+      .then((response) => {
+        const fetchedServiceProviders = response.data;
+        setServiceProviders(fetchedServiceProviders);
+      })
+      .catch((error) => {
+        console.error('Error fetching service providers:', error);
+      });
+
+    // Fetch jobs data
+    axios.get('/api/jobs')
+      .then((response) => {
+        const fetchedJobs = response.data;
+        setJobs(fetchedJobs);
+      })
+      .catch((error) => {
+        console.error('Error fetching jobs:', error);
+      });
   }, []);
 
   return (

@@ -10,8 +10,21 @@ export default function ServiceProviderAccount() {
     'Service 3',
   ]);
   const [availableJobs, setAvailableJobs] = useState([]);
-
+  const [editable, setEditable] = useState(false); // State for edit mode
   // Simulate fetching available jobs from the server
+  
+
+
+
+  // Function to toggle edit mod
+  const toggleEdit = () => {
+    setEditable(!editable);
+  }
+
+    // Function to handle form submission and update state with edited data
+    const handleEditSubmit = (editedData) => {
+      // Update state with edited data (e.g., email, phone, servicesOffered)
+    };
   useEffect(() => {
     // Replace this with your actual API call to fetch available jobs
     setTimeout(() => {
@@ -48,46 +61,42 @@ export default function ServiceProviderAccount() {
           Account Information
         </h2>
         <div className="mb-2 sm:mb-4">
-          <label className="block text-gray-300 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
-            Email
-          </label>
-          <div className="bg-gray-700 text-white border rounded p-1 sm:p-2 text-xs sm:text-sm">
-            {email}
-          </div>
+          {/* Edit button */}
+          {editable ? (
+            <button
+              onClick={toggleEdit}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs sm:text-base py-1 sm:py-2 px-2 sm:px-4 rounded"
+            >
+              Cancel Edit
+            </button>
+          ) : (
+            <button
+              onClick={toggleEdit}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs sm:text-base py-1 sm:py-2 px-2 sm:px-4 rounded"
+            >
+              Edit
+            </button>
+          )}
+          {/* Subscribe button */}
+          <Link
+            to="/subscription" // Define the route for your subscription page
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs sm:text-base py-1 sm:py-2 px-2 sm:px-4 rounded ml-2"
+          >
+            Subscribe
+          </Link>
         </div>
-        <div className="mb-2 sm:mb-4">
-          <label className="block text-gray-300 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
-            Phone Number
-          </label>
-          <div className="bg-gray-700 text-white border rounded p-1 sm:p-2 text-xs sm:text-sm">
-            {phone}
-          </div>
-        </div>
-        <div className="mb-2 sm:mb-4">
-          <label className="block text-gray-300 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
-            Services Offered
-          </label>
-          <ul className="bg-gray-700 text-white border rounded p-1 sm:p-2 text-xs sm:text-sm">
-            {servicesOffered.map((service, index) => (
-              <li key={index}>{service}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="mb-2 sm:mb-4">
-          <label className="block text-gray-300 text-xs sm:text-sm font-bold mb-1 sm:mb-2">
-            Available Jobs
-          </label>
-          <ul className="bg-gray-700 text-white border rounded p-1 sm:p-2 text-xs sm:text-sm">
-            {availableJobs.length > 0 ? (
-              availableJobs.map((job, index) => (
-                <li key={index}>{job}</li>
-              ))
-            ) : (
+        {/* Display user information or editable form based on 'editable' state */}
+        {editable ? (
+          <EditProfile
+            initialData={{ email, phone, servicesOffered }}
+            onSubmit={handleEditSubmit}
+          />
+        ) : (
               <li>No available jobs at the moment.</li>
             )}
-          </ul>
+        
         </div>
       </div>
-    </div>
+   
   );
 }
